@@ -17,6 +17,8 @@ export class ChatFeedComponent implements OnInit {
 
   ngOnInit(): void {
     setInterval(() => {
+      let date = Date.now();
+
       this.telegramService.getUpdates().toPromise().then(
         res => {
           this.messages = res.result.filter(res => {
