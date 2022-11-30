@@ -8,6 +8,7 @@ import {TelegramService} from "../../util/telegram.service";
   styleUrls: ['./chat-feed.component.scss']
 })
 export class ChatFeedComponent implements OnInit {
+
   messages: ChatMessageModel[] = [];
 
   constructor(private telegramService: TelegramService) {
@@ -16,13 +17,14 @@ export class ChatFeedComponent implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this.telegramService.getUpdates().toPromise().then(
-        res => this.messages = res.result.filter(res => {
-          return res.message != undefined
-            && res.message.chat.title == "Boom WS 22"
-            && res.message.text != undefined
-        })
+        res => {
+          this.messages = res.result.filter(res => {
+            return res.message != undefined
+              && res.message.chat.title == "Boom WS 22"
+              && res.message.text != undefined
+          });
+        }
       )
     }, 5000)
   }
-
 }

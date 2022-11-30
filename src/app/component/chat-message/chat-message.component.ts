@@ -17,4 +17,8 @@ export class ChatMessageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public isImportant(msg: string): boolean {
+    let words = ["wichtig", "important", "alarm", "dringend", "achtung", "vorsicht"];
+    return words.filter(w => msg.toLowerCase().includes(w)).length >= 1;
+  }
 }
