@@ -3,6 +3,6 @@
     <img class="sv-logo" src="assets/sv_logo.svg" alt="SV Logo">
   </div>
   <div class="right-container">
-
+    <chat-message *ngFor="let message of messages" [message]="message"></chat-message>
   </div>
 </div>
