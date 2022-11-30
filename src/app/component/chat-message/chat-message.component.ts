@@ -21,4 +21,8 @@ export class ChatMessageComponent implements OnInit {
     let words = ["wichtig", "important", "alarm", "dringend", "achtung", "vorsicht"];
     return words.filter(w => msg.toLowerCase().includes(w)).length >= 1;
   }
+
+  pipeBreakLines(text: string): string {
+    return text.replace("\n", "<br>")
+  }
 }
