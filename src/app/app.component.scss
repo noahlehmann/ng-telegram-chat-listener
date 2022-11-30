@@ -1,16 +1,18 @@
 .container {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  gap: 2vw;
   padding: 1vw;
+  height: 90vh;
+  width: 90vw;
+  justify-content: center;
 }
 
 .left-container {
-  display: flex;
+  flex: 1;
   padding: 1vw;
-  flex-grow: 1;
 }
 
 .chat-feed {
-  flex-grow: 2;
+  flex: 2;
 }

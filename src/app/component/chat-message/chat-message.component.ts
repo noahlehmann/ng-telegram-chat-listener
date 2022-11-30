@@ -9,7 +9,7 @@ import ChatMessageModel from "../../model/chat-message.model";
 export class ChatMessageComponent implements OnInit {
 
   @Input()
-  message!: ChatMessageModel;
+  response!: ChatMessageModel;
 
   constructor() {
   }

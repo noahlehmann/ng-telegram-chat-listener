@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import ChatMessageModel from "../../model/chat-message.model";
-import {ApiKeyReaderService} from "../../util/api-key-reader.service";
+import {TelegramService} from "../../util/telegram.service";
 
 @Component({
   selector: 'app-chat-feed',
@@ -8,30 +8,21 @@ import {ApiKeyReaderService} from "../../util/api-key-reader.service";
   styleUrls: ['./chat-feed.component.scss']
 })
 export class ChatFeedComponent implements OnInit {
+  messages: ChatMessageModel[] = [];
 
-  messages: ChatMessageModel[] = [
-    {
-      message_id: 0,
-      date: Date.now(),
-      from: {
-        id: 0,
-        is_bot: true,
-        first_name: "Testname"
-      },
-      chat: {
-        id: 0,
-        type: "private",
-        first_name: "Testname"
-      },
-      text: "Test Message"
-    }
-  ]
-
-  constructor(apiKeyService: ApiKeyReaderService) {
-    console.log(apiKeyService.getTelegramApiKey())
+  constructor(private telegramService: TelegramService) {
   }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.telegramService.getUpdates().toPromise().then(
+        res => this.messages = res.result.filter(res => {
+          return res.message != undefined
+            && res.message.chat.title == "Boom WS 22"
+            && res.message.text != undefined
+        })
+      )
+    }, 5000)
   }
 
 }
