@@ -11,13 +11,6 @@
   flex-grow: 1;
 }
 
-.right-container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 2vw;
+.chat-feed {
   flex-grow: 2;
-  align-items: center;
-  padding: 1vw;
 }
-

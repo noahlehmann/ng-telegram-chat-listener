@@ -2,7 +2,5 @@
   <div class="left-container">
     <img class="sv-logo" src="assets/sv_logo.svg" alt="SV Logo">
   </div>
-  <div class="right-container">
-    <chat-message *ngFor="let message of messages" [message]="message"></chat-message>
-  </div>
+  <app-chat-feed class="chat-feed"></app-chat-feed>
 </div>
